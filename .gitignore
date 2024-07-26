@@ -362,3 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /MagicVilla_VillaAPI/MagicVilla_VillaAPI.csproj
+/MagicVilla_VillaAPI.sln
+/MagicVilla_VillaAPI/MagicVilla_VillaAPI.csproj
