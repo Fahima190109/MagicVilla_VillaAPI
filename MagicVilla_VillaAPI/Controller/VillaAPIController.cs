@@ -3,6 +3,7 @@ using MagicVilla_VillaAPI.Models;
 using MagicVilla_VillaAPI.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace MagicVilla_VillaAPI.Controller
 {
@@ -52,6 +53,11 @@ namespace MagicVilla_VillaAPI.Controller
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<VillaDTO> CreateVilla([FromBody] VillaDTO villaDTO)
         {
+            if (VillaStore.villaList.FirstOrDefault(u => u.Name.ToLower() == villaDTO.Name.ToLower())!= null)
+            {
+                ModelState.AddModelError("CustomeError", "Villa already Exists!");
+                return BadRequest(ModelState);
+            }
             if (villaDTO == null)
             {
                 return BadRequest(villaDTO);
